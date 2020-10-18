@@ -28,30 +28,15 @@ class PostItem(db.Model):
     location = db.Column(db.String(80), unique=False, nullable=False)
     #time = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
 
-    @property
-    def serialize(self):
-        return {
-            'id': self.id,
-            'name': self.name,
-            'storeItem': self.storeItem,
-            'avalability': self.avalability,
-            'location': self.location,
-            #'time': self.time.strftime("%A, %b %d, %Y, %X")
-        }
-
     def __repr__(self):
         return (id, name, storeItem, avalability, location)
 
 db.create_all()
 
 def get_posts():
-    post = PostItem(name = 'a', storeItem = 'b', avalability = 'c', location = 'd')
-    db.session.add(post)
-    db.session.commit()
     query = [i.__dict__ for i in PostItem.query.all()]
     for item in query:
         del item['_sa_instance_state']
-    print(query)
     return query
 
 
@@ -111,7 +96,7 @@ def render_upload():
             flash('No photo selected')
             return redirected
 
-        locationStr = request.form.get('location') + ': ' + request.form.get('store')
+        locationStr = request.form.get('location') + '-' + request.form.get('store')
         
         # Save to database
         post = PostItem(name = request.form.get('Name'), storeItem = item, avalability = request.form.get('radio'), location = locationStr)

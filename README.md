@@ -43,4 +43,3 @@ flask run
 ```
 
 The website can be accessed at `localhost:5000`.
-

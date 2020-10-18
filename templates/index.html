@@ -46,18 +46,18 @@
     <div id="Card" class="col-sm-4 box">
 
     </div>
-
-    <h1>{{posts.name}}</h1>
+    <br>
 <!-- Will  run through database and create posts that a user can scroll through--> 
-
-
-    <!-- {% for i in posts %}
-      <h2>{{ i.name }}</h2>
-      <h2>{{ i.storeItem }}</h2>
-      <h2>{{ i.avalability }}</h2>
-      <h2>{{ i.location }}</h2>
-    {% endfor %} -->
-    
+    <div class='text-center'>
+        <h2>Test Post:</h2>
+        <img src="{{url_for('static', filename='temp.jpg')}}" alt="Walmart Shelves" width="500" height="600"> 
+        <p><b>Name: John</b></p>
+        <p><b>Store Item: Sugar</b></p>
+        <p><b>Availability: Available</b></p>
+        <p><b>Location: Raleigh-Walmart</b></p>
+        <p><b>Time: Sunday, October 18, 2020 10:22:30</b></p>
+    </div>
+    <br>
 </body>
     
 </html>
