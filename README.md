@@ -7,7 +7,7 @@ then take a look at. The other users are then able to find what store has the su
 can then purchase it from the store. Supplymedia's feed displays the picture, the user's name who posted the photo, the availability, the city and the store to help users find the nearest available store that someone has posted that has the supply they need in it.
 
  Creators:
- Sanjit Verma 
+ Sanjit Kumar Verma 
  github @sanjitkverma
 
  Ethan Tran   
