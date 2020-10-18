@@ -1,51 +1,78 @@
+<!-- Upload Webpage to create new item availability -->
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-<style>
-    body{
-        margin: 0;
-        font-family: 'Times New Roman', Times, serif;
-    }
-    .topnav{
-        overflow:hidden;
-        background-color: black;
-    }
-    .topnav a{
-        float: left;
-        display: block;
-        color:cornsilk ;
-        text-align: left;
-        padding: 12x 14x;
-        text-decoration: none;
-        font-size: 14;
-    }
-    .topnav a:hover{  
-        background-color:red ;
-        color:black;
-    }
-    /* .topnav a.active{
-        
-    } */
-</style>
-        <title>Supplymedia</title> 
-        <meta charset=" utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
-    </head>
 
-<body> 
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        
+    </style>
+    <title>Supplymedia</title>
+    <meta charset=" utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
+        integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+    <link rel='stylesheet' href="{{url_for('static', filename='style.css')}}">
+</head>
+
+<!--Format the websitem change colors and center items  -->
+<body style="background-color:#F5F5DC;">
+    <!-- NAVIGATION-->
+    <header class="site-header">
+        <nav class="navbar navbar-expand-md navbar-dark bg-steel fixed-top">
+            <div class="container">
+                <a class="navbar-brand mr-4" href="{{ url_for('render_index') }}">Supplymedia</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggle"
+                    aria-controls="navbarToggle" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarToggle">
+                    <div class="navbar-nav mr-auto">
+                        <a class="nav-item nav-link" href="{{ url_for('render_upload')}}">Upload</a>
+                    </div>
+                    <!-- Navbar Right Side -->
+                    <div class="navbar-nav">
+                        <a class="nav-item nav-link" href="{{url_for('render_about')}}">About</a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- END NAVIGATION-->
+
+    <br><br><br><br>
+
+    <div class='text-center'>
+    <!-- message to let the user know what still needs to be included in the report -->
+    <!-- DISPLAY FLASH  -->
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            {% for message in messages %}
+                <h3>{{ message }}</h3>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+    <!-- END -->
+    </div>
+    
+    <br><br>
+
+    <div class='text-center'>
+
     <h4>Upload new available supply item</h4>
     <p>Select Item Located in Store </p>
-    <p>If unspecified item used textbox to input item name </p>
+    <p>If unspecified item select other to specify item </p>
+    
     <form method=POST enctype='multipart/form-data'>
         <label>Choose store item:</label>
-        <select type="storeItem" name="storeItem" id="storeItem"> 
+        <!-- dropdown menu to choose what item the user is reporting on -->
+        <select type="storeItem" name="storeItem" id="storeItem" onchange="if (this.value=='Other'){this.form['Other'].style.visibility='visible'} else{this.form['Other'].style.visibility='hidden'};">
             <option value="--------">--------</option>
-            <option value="Hand Sanitizer">Hand Sanitizer</option>   
-            <option value="Face Mask">Face Mask</option> 
-            <option value="Hand Soap">Hand Soap</option>   
-            <option value="Toilet Paper">Toilet Paper</option>  
+            <option value="Hand Sanitizer">Hand Sanitizer</option>
+            <option value="Face Mask">Face Mask</option>
+            <option value="Hand Soap">Hand Soap</option>
+            <option value="Toilet Paper">Toilet Paper</option>
             <option value="Paper Towels">Paper Towels</option>
             <option value="Thermometer">Thermometer</option>
             <option value="Spray Disinfectant">Spray Disinfectant</option>
@@ -53,30 +80,53 @@
             <option value="Medication">Medication</option>
             <option value="Infant Food">Infant Food</option>
             <option value="Other">Other</option><br>
-
-            <label for="cmnt">Other Item:</Other>
-                <input type="text" id="item" name="cmnt">
         </select>
-        
+
+        <!-- textbox is hidden until "other" is selected from the dropdown, textbox dissapears when other is deselected -->
+        <input type="textbox" name="Other" style="visibility:hidden;" placeholder="other"/>
+        <table></table>
+        <tr>
+        <td>
+
+        </td>
+        </tr>
+        </table>
+
+        <!--  -->
+
+        <label>Username:</label>
+        <input type="text" id="item" name="Name"><br><br>
+      
+        <!-- status of object -->
 
         <p>Select Availability</p>
-            <input type="radio" name="radio" id="Available"  name="radio" value="Available">
-            <label for="Available">Available</label><br>
-            <input type="radio" name="radio" id="Low Supply"  name="radio" value="Low Supply">
-            <label for="Low Supply">Low Supply</label><br>
-            <input type="radio" name="radio" id="Out of Stock"  name="radio" value="Out of Stock">
-            <label for="Out of Stock">Out of Stock</label><br>
-            <br>
-    
+        <input type="radio" name="radio" id="Available" name="radio" value="Available">
+        <label for="Available">Available</label><br>
+        <input type="radio" name="radio" id="Low Supply" name="radio" value="Low Supply">
+        <label for="Low Supply">Low Supply</label><br>
+        <input type="radio" name="radio" id="Out of Stock" name="radio" value="Out of Stock">
+        <label for="Out of Stock">Out of Stock</label><br>
+        <br>
 
-        <p>Click on the "Choose File" button to upload picture of supplies </p>
+        <!--location-->
+        
+        <label>City:</label>
+        <input type='textbox' type="text" name='location'>
+        <br><br>
+        <label>Store:</label>
+        <input type='textbox' type="text" name='store'>
+        <br><br>
+
+        <p>Click on the "Choose File" button to upload picture of supplies. Only JPG/JPEG will be accepted </p>
         
         <!-- UPLOAD PHOTO-->
         <input type='file' name='photo'>
-        <input type='submit' value='Submit'>
-    
+        <input type='submit' class='btn btn-success' value='Submit'>
+
     </form>
 
+    <h4 style="color: red">{{ error }}</h4>
+    </div>
 </body>
-    
+
 </html>

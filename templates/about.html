@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+
+    </style>
+    <title>Supplymedia</title>
+    <meta charset=" utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
+        integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+    <link rel='stylesheet' href="{{url_for('static', filename='style.css')}}">
+</head>
+
+
+<body style="background-color:#F5F5DC;">
+    <!-- NAVIGATION-->
+    <header class="site-header">
+        <nav class="navbar navbar-expand-md navbar-dark bg-steel fixed-top">
+            <div class="container">
+                <a class="navbar-brand mr-4" href="{{ url_for('render_index') }}">Supplymedia</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggle"
+                    aria-controls="navbarToggle" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarToggle">
+                    <div class="navbar-nav mr-auto">
+                        <a class="nav-item nav-link" href="{{ url_for('render_upload')}}">Upload</a>
+                    </div>
+                    <!-- Navbar Right Side -->
+                    <div class="navbar-nav">
+                        <a class="nav-item nav-link" href="#">About</a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <!-- END NAVIGATION-->
+
+    <br><br><br><br>
+    <div class='text-center'>
+</body>
+
+<form method=POST enctype='multipart/form-data'>
+    <h4 style="text-align: left; padding-left: 3%;">About Us</h4>
+    <br>
+    <p style="padding-left: 3%; padding-right: 3%;">Supplymedia was create to tackle the issue of finding medical and health supplies during 
+        crisis and pandemic related times. In a social media type interface, users are able to upload
+        the type of supply (such as a face mask) that they have found,the availability of the supply 
+        and a picture proof of the supply. They can then post the supply on the feed which other users can 
+        then take a look at. The other users are then able to find what store has the supply available and
+        can then purchase it from the store. Supplymedia's feed displays the picture, the user's name who posted the photo, the availability, 
+        the city and the store to help users find the nearest available store that someone has posted that has the supply they need in it.</p>
+    
+    <br>
+    <h4 style="padding-left: 3%; padding-right: 3%;">Contact Us</h4>
+    <br> 
+    <p style="padding-left: 3%; padding-right: 3%;">We are a team based in North Carolina and are happy to help you if you run into issues with Supplymedia.
+        Feel free to contact us by submitting an issue on Github 
+    </p>
+    <br>
+
+    <p>Creators:
+        <br>
+        Sanjit Verma 
+        <br>
+        github @sanjitkverma
+        <br><br>
+        Ethan Tran 
+        <br>  
+        github @iSkytran
+        <br><br>
+        Zachary Wilson
+        <br>
+        github @ZTW21
+        <br><br>
+        Senih Tosun
+        <br>
+        github @senihtosun             
+    </p>
+</form>
+
+</html>
