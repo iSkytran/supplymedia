@@ -42,4 +42,4 @@ The following will launch the websever.
 flask run
 ```
 
-The website can be accessed at `localhost:5000`.
+The website can be accessed at supplymedia.tech.
